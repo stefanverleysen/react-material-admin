@@ -1,24 +1,26 @@
-import React from "react";
+import React, { createContext, useContext, useReducer } from 'react';
 
-var UserStateContext = React.createContext();
-var UserDispatchContext = React.createContext();
+const UserStateContext = createContext();
+const UserDispatchContext = createContext();
+
+const initialState = {
+  isAuthenticated: false,
+  user: null,
+};
 
 function userReducer(state, action) {
   switch (action.type) {
-    case "LOGIN_SUCCESS":
-      return { ...state, isAuthenticated: true };
-    case "SIGN_OUT_SUCCESS":
-      return { ...state, isAuthenticated: false };
-    default: {
-      throw new Error(`Unhandled action type: ${action.type}`);
-    }
+    case 'LOGIN':
+      return { ...state, isAuthenticated: true, user: action.payload };
+    case 'LOGOUT':
+      return { ...state, isAuthenticated: false, user: null };
+    default:
+      throw new Error(`Unknown action: ${action.type}`);
   }
 }
 
-function UserProvider({ children }) {
-  var [state, dispatch] = React.useReducer(userReducer, {
-    isAuthenticated: !!localStorage.getItem("id_token"),
-  });
+export const UserProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(userReducer, initialState);
 
   return (
     <UserStateContext.Provider value={state}>
@@ -27,50 +29,22 @@ function UserProvider({ children }) {
       </UserDispatchContext.Provider>
     </UserStateContext.Provider>
   );
-}
+};
 
-function useUserState() {
-  var context = React.useContext(UserStateContext);
-  if (context === undefined) {
-    throw new Error("useUserState must be used within a UserProvider");
+export const useUserState = () => useContext(UserStateContext);
+export const useUserDispatch = () => useContext(UserDispatchContext);
+
+export const loginUser = async (dispatch, loginPayload) => {
+  // Implement login logic here, e.g., API call
+  try {
+    dispatch({ type: 'LOGIN', payload: loginPayload });
+    return true;
+  } catch (error) {
+    console.error('Login error', error);
+    return false;
   }
-  return context;
-}
+};
 
-function useUserDispatch() {
-  var context = React.useContext(UserDispatchContext);
-  if (context === undefined) {
-    throw new Error("useUserDispatch must be used within a UserProvider");
-  }
-  return context;
-}
-
-export { UserProvider, useUserState, useUserDispatch, loginUser, signOut };
-
-// ###########################################################
-
-function loginUser(dispatch, login, password, history, setIsLoading, setError) {
-  setError(false);
-  setIsLoading(true);
-
-  if (!!login && !!password) {
-    setTimeout(() => {
-      localStorage.setItem('id_token', 1)
-      setError(null)
-      setIsLoading(false)
-      dispatch({ type: 'LOGIN_SUCCESS' })
-
-      history.push('/app/dashboard')
-    }, 2000);
-  } else {
-    dispatch({ type: "LOGIN_FAILURE" });
-    setError(true);
-    setIsLoading(false);
-  }
-}
-
-function signOut(dispatch, history) {
-  localStorage.removeItem("id_token");
-  dispatch({ type: "SIGN_OUT_SUCCESS" });
-  history.push("/login");
-}
+export const logoutUser = (dispatch) => {
+  dispatch({ type: 'LOGOUT' });
+};
