@@ -35,13 +35,28 @@ export const useUserState = () => useContext(UserStateContext);
 export const useUserDispatch = () => useContext(UserDispatchContext);
 
 export const loginUser = async (dispatch, loginPayload) => {
-  // Implement login logic here, e.g., API call
-  try {
-    dispatch({ type: 'LOGIN', payload: loginPayload });
-    return true;
-  } catch (error) {
-    console.error('Login error', error);
-    return false;
+
+  const myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+
+  console.log(loginPayload)
+  const requestOptions = {
+    method: "POST",
+    headers: myHeaders,
+    body: JSON.stringify(loginPayload),
+    redirect: "follow"
+  };
+
+  let resp = await fetch('http://localhost:8000/user/login', requestOptions);
+  if (resp.ok) {
+    console.log(resp);
+    try {
+      dispatch({ type: 'LOGIN', payload: loginPayload });
+      return true;
+    } catch (error) {
+      console.error('Login error', error);
+      return false;
+    }
   }
 };
 

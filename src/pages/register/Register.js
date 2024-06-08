@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import axios from 'axios';
 
 const Register = () => {
   const [firstName, setFirstName] = useState('');
@@ -13,34 +12,67 @@ const Register = () => {
   const [error, setError] = useState('');
   const history = useHistory();
 
-  const handleRegister = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await axios.post('http://localhost:5000/api/auth/register', {
-        firstName,
-        lastName,
-        email,
-        phone,
-        password,
-        isRightHanded,
-        backhandType,
-      });
-      if (response.data.token) {
-        localStorage.setItem('token', response.data.token);
+
+
+  async function fetchAPI(endpoint, method, payload, credentials = false) {
+    let options = {
+      method: method
+    };
+
+    if (credentials) {
+      options["credentials"] = "include";
+    }
+    if (payload) {
+      options["body"] = JSON.stringify(payload);
+    }
+
+    if (method !== "GET") {
+      options["headers"] = {
+        ...options["headers"],
+        "Content-Type": "application/json"
+      };
+    }
+
+    let response = await fetch(`${endpoint}`, options);
+
+    return response;
+
+  }
+  const handleRegister = async () => {
+    console.log({
+      firstName,
+      lastName,
+      email,
+      phone,
+      password,
+      isRightHanded,
+      backhandType
+    });
+
+    let data = {
+      firstName,
+      lastName,
+      email,
+      phone,
+      password,
+      isRightHanded,
+      backhandType
+    }
+
+    let resp = await fetchAPI('http://localhost:8000/user', 'POST', data);
+    if (resp.ok) {
+      resp = await resp.json();
+      if (resp.token) {
+        localStorage.setItem('token', resp.token);
         history.push('/app/dashboard');
       }
-    } catch (error) {
-      if (error.response && error.response.data && error.response.data.msg) {
-        setError(error.response.data.msg);
-      } else {
-        setError('Registration failed. Please try again.');
-      }
-      console.error('Registration failed', error);
     }
   };
 
+
   return (
     <div>
+      a
       <h2>Register</h2>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       <form onSubmit={handleRegister}>

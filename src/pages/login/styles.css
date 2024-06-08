@@ -1,0 +1,746 @@
+/* Apply a clean, minimalistic black and white color scheme */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff; /* White background */
+    color: #000; /* Black text */
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background: #000; /* Black */
+    padding: 20px 0;
+    text-align: center;
+    border-bottom: 2px solid #000; /* Black */
+}
+
+header nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #fff; /* White */
+    font-weight: bold;
+}
+
+.hero {
+    position: relative;
+    text-align: center;
+    color: white;
+    flex: 1;
+}
+
+.hero-image {
+    width: 100%;
+    height: 80vh;
+    object-fit: cover;
+    filter: brightness(0.7); /* Lightened filter */
+}
+
+.hero-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff; /* White */
+    text-shadow: 2px 2px 5px #000; /* Black */
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent Black */
+    border-radius: 10px;
+    border: 2px solid #000; /* Black */
+}
+
+.hero-text h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    color: #fff; /* White */
+    text-shadow: 2px 2px 5px #000; /* Black */
+}
+
+.hero-text p {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #fff; /* White */
+    text-shadow: 2px 2px 5px #000; /* Black */
+}
+
+.hero-text button {
+    background: #000; /* Black */
+    color: #fff; /* White */
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.hero-text button:hover {
+    background: #333; /* Darker Black */
+    color: #fff; /* White */
+    transform: scale(1.05);
+}
+
+section {
+    padding: 50px 20px;
+    text-align: center;
+    border-bottom: 2px solid #000; /* Black */
+    flex: 1;
+}
+
+.features {
+    text-align: center;
+    padding: 20px;
+}
+
+.features h2 {
+    margin-bottom: 20px;
+    color: #000; /* Black */
+}
+
+.feature-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.feature {
+    flex: 1 1 150px;
+    max-width: 200px;
+    text-align: center;
+    margin: 10px;
+}
+
+.feature i {
+    font-size: 36px;
+    color: #000; /* Black */
+}
+
+.feature h3 {
+    color: #000; /* Black */
+    margin: 10px 0;
+}
+
+.feature p {
+    color: #000; /* Black */
+    line-height: 1.6;
+}
+
+.learn-more-btn {
+    background: #000; /* Black */
+    color: #fff; /* White */
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s, transform 0.3s;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.learn-more-btn:hover {
+    background: #333; /* Darker Black */
+    color: #fff; /* White */
+    transform: scale(1.05);
+}
+
+footer {
+    background: #000; /* Black */
+    color: #fff; /* White */
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+}
+
+footer img {
+    max-width: 50%; /* Shrink footer image to half */
+    height: auto;
+}
+
+.register-form, .login-form {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9); /* Semi-transparent White */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.register-form h2, .login-form h2 {
+    margin-bottom: 20px;
+    color: #000; /* Black */
+}
+
+.register-form .social-buttons button,
+.login-form .social-buttons button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.register-form .google-btn,
+.login-form .google-btn {
+    background: #DB4437;
+    color: white;
+}
+
+.register-form .apple-btn,
+.login-form .apple-btn {
+    background: #000;
+    color: white;
+}
+
+.register-form .facebook-btn,
+.login-form .facebook-btn {
+    background: #3b5998;
+    color: white;
+}
+
+.register-form .social-buttons button i.fab,
+.login-form .social-buttons button i.fab {
+    margin-right: 10px;
+}
+
+.register-form .social-buttons button:hover,
+.login-form .social-buttons button:hover {
+    transform: scale(1.05);
+}
+
+.register-form input,
+.login-form input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #BDC3C7; /* Gray */
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.register-form button,
+.login-form button {
+    background: #000; /* Black */
+    color: #fff; /* White */
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.register-form button:hover,
+.login-form button:hover {
+    background: #333; /* Darker Black */
+    color: #fff; /* White */
+    transform: scale(1.05);
+}
+
+.about-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9); /* Semi-transparent White */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.about-container h1 {
+    color: #000; /* Black */
+    margin-bottom: 20px;
+}
+
+.about-container p {
+    color: #000; /* Black */
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+
+.faq {
+    text-align: left;
+}
+
+.faq-item {
+    margin-bottom: 20px;
+}
+
+.faq-item h3 {
+    color: #000; /* Black */
+    margin-bottom: 10px;
+}
+
+.faq-item p {
+    color: #000; /* Black */
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .hero-text h1 {
+        font-size: 36px;
+    }
+
+    .hero-text p {
+        font-size: 18px;
+    }
+
+    .hero-text button {
+        padding: 8px 16px;
+        font-size: 16px;
+    }
+
+    section {
+        padding: 30px 10px;
+    }
+
+    .register-form,
+    .login-form,
+    .about-container {
+        width: 90%;
+        margin: 30px auto;
+        padding: 15px;
+    }
+
+    .register-form h2,
+    .login-form h2,
+    .about-container h1 {
+        font-size: 24px;
+    }
+
+    .register-form input,
+    .login-form input {
+        font-size: 14px;
+    }
+
+    .register-form button,
+    .login-form button {
+        padding: 8px 16px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-image {
+        height: 50vh;
+    }
+
+    .hero-text h1 {
+        font-size: 28px;
+    }
+
+    .hero-text p {
+        font-size: 16px;
+    }
+
+    .hero-text button {
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+
+   
+/* Apply a clean, minimalistic black and white color scheme */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff; /* White background */
+    color: #000; /* Black text */
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background: #000; /* Black */
+    padding: 20px 0;
+    text-align: center;
+    border-bottom: 2px solid #000; /* Black */
+}
+
+header nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #fff; /* White */
+    font-weight: bold;
+}
+
+.hero {
+    position: relative;
+    text-align: center;
+    color: white;
+    flex: 1;
+}
+
+.hero-image {
+    width: 100%;
+    height: 80vh;
+    object-fit: cover;
+    filter: brightness(0.7); /* Lightened filter */
+}
+
+.hero-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff; /* White */
+    text-shadow: 2px 2px 5px #000; /* Black */
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent Black */
+    border-radius: 10px;
+    border: 2px solid #000; /* Black */
+}
+
+.hero-text h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    color: #fff; /* White */
+    text-shadow: 2px 2px 5px #000; /* Black */
+}
+
+.hero-text p {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #fff; /* White */
+    text-shadow: 2px 2px 5px #000; /* Black */
+}
+
+.hero-text button {
+    background: #000; /* Black */
+    color: #fff; /* White */
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.hero-text button:hover {
+    background: #333; /* Darker Black */
+    color: #fff; /* White */
+    transform: scale(1.05);
+}
+
+section {
+    padding: 50px 20px;
+    text-align: center;
+    border-bottom: 2px solid #000; /* Black */
+    flex: 1;
+}
+
+.features {
+    text-align: center;
+    padding: 20px;
+}
+
+.features h2 {
+    margin-bottom: 20px;
+    color: #000; /* Black */
+}
+
+.feature-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.feature {
+    flex: 1 1 150px;
+    max-width: 200px;
+    text-align: center;
+    margin: 10px;
+}
+
+.feature i {
+    font-size: 36px;
+    color: #000; /* Black */
+}
+
+.feature h3 {
+    color: #000; /* Black */
+    margin: 10px 0;
+}
+
+.feature p {
+    color: #000; /* Black */
+    line-height: 1.6;
+}
+
+.learn-more-btn {
+    background: #000; /* Black */
+    color: #fff; /* White */
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s, transform 0.3s;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.learn-more-btn:hover {
+    background: #333; /* Darker Black */
+    color: #fff; /* White */
+    transform: scale(1.05);
+}
+
+footer {
+    background: #000; /* Black */
+    color: #fff; /* White */
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+}
+
+footer img {
+    max-width: 50%; /* Shrink footer image to half */
+    height: auto;
+}
+
+.register-form, .login-form {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9); /* Semi-transparent White */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.register-form h2, .login-form h2 {
+    margin-bottom: 20px;
+    color: #000; /* Black */
+}
+
+.register-form .social-buttons button,
+.login-form .social-buttons button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.register-form .google-btn,
+.login-form .google-btn {
+    background: #DB4437;
+    color: white;
+}
+
+.register-form .apple-btn,
+.login-form .apple-btn {
+    background: #000;
+    color: white;
+}
+
+.register-form .facebook-btn,
+.login-form .facebook-btn {
+    background: #3b5998;
+    color: white;
+}
+
+.register-form .social-buttons button i.fab,
+.login-form .social-buttons button i.fab {
+    margin-right: 10px;
+}
+
+.register-form .social-buttons button:hover,
+.login-form .social-buttons button:hover {
+    transform: scale(1.05);
+}
+
+.register-form input,
+.login-form input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #BDC3C7; /* Gray */
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.register-form button,
+.login-form button {
+    background: #000; /* Black */
+    color: #fff; /* White */
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.register-form button:hover,
+.login-form button:hover {
+    background: #333; /* Darker Black */
+    color: #fff; /* White */
+    transform: scale(1.05);
+}
+
+.about-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff; /* White */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.about-container h1 {
+    color: #000; /* Black */
+    margin-bottom: 20px;
+}
+
+.about-container p {
+    color: #000; /* Black */
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+
+.faq {
+    text-align: left;
+}
+
+.faq-item {
+    margin-bottom: 20px;
+}
+
+.faq-item h3 {
+    color: #000; /* Black */
+    margin-bottom: 10px;
+}
+
+.faq-item p {
+    color: #000; /* Black */
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .hero-text h1 {
+        font-size: 36px;
+    }
+
+    .hero-text p {
+        font-size: 18px;
+    }
+
+    .hero-text button {
+        padding: 8px 16px;
+        font-size: 16px;
+    }
+
+    section {
+        padding: 30px 10px;
+    }
+
+    .register-form,
+    .login-form,
+    .about-container {
+        width: 90%;
+        margin: 30px auto;
+        padding: 15px;
+    }
+
+    .register-form h2,
+    .login-form h2,
+    .about-container h1 {
+        font-size: 24px;
+    }
+
+    .register-form input,
+    .login-form input {
+        font-size: 14px;
+    }
+
+    .register-form button,
+    .login-form button {
+        padding: 8px 16px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-image {
+        height: 50vh;
+    }
+
+    .hero-text h1 {
+        font-size: 28px;
+    }
+
+    .hero-text p {
+        font-size: 16px;
+    }
+
+    .hero-text button {
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+
+    section {
+        padding: 20px 5px;
+    }
+
+    .register-form,
+    .login-form,
+    .about-container {
+        width: 90%;
+        margin: 30px auto;
+        padding: 15px;
+    }
+
+    .register-form h2,
+    .login-form h2,
+    .about-container h1 {
+        font-size: 24px;
+    }
+
+    .register-form input,
+    .login-form input {
+        font-size: 14px;
+    }
+
+    .register-form button,
+    .login-form button {
+        padding: 8px 16px;
+        font-size: 16px;
+    }
+}
+}
+
+
+
